@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(cors({
 	origin: process.env.FRONTEND_URL,
 	credentials: true
-}));
+}))
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", protectRoute, movieRoutes);
 app.use("/api/v1/tv", protectRoute, tvRoutes);
