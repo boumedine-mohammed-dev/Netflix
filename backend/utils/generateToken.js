@@ -6,9 +6,8 @@ export const generateTokenAndSetCookie = (userId, res) => {
 	res.cookie("jwt-netflix", token, {
 		maxAge: 15 * 24 * 60 * 60 * 1000,
 		httpOnly: true, // prevent XSS attacks cross-site scripting attacks, make it not be accessed by JS
-		sameSite: "none", // CSRF attacks cross-site request forgery attacks
+		sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // CSRF attacks cross-site request forgery attacks
 		secure: process.env.NODE_ENV === "production",
 	});
-
 	return token;
 };
